@@ -1,9 +1,11 @@
 package builder;
 
+import java.awt.Point;
+import java.awt.image.BufferedImage;
 import java.io.File;
 
 public interface Builder {
-	public void createDirt(int x,int y);
-	public void createGrass(int x,int y);
-	public File getResult();
+	public void createDirt(Point p);
+	public void createGrass(Point p);
+	public BufferedImage getResult();
 }
