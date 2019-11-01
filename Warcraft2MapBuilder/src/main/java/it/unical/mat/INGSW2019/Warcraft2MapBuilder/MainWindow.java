@@ -3,6 +3,9 @@ package it.unical.mat.INGSW2019.Warcraft2MapBuilder;
 import java.awt.EventQueue;
 import java.awt.Point;
 import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -10,6 +13,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 import builder.AllyMapBuilder;
+import directors.ASCIIDirector;
 
 import java.awt.BorderLayout;
 
@@ -56,22 +60,8 @@ public class MainWindow {
 		imglabel.setBounds(0, 0, 600, 600);
 		frame.getContentPane().add(imglabel);
 		AllyMapBuilder mp=new AllyMapBuilder(600,600);
-		mp.createDirt(new Point(3,3));
-		mp.createDirt(new Point(4,3));
-		mp.createDirt(new Point(5,3));
-		mp.createDirt(new Point(6,3));
-		mp.createDirt(new Point(3,4));
-		mp.createDirt(new Point(4,4));
-		mp.createDirt(new Point(5,4));
-		mp.createDirt(new Point(6,4));
-		mp.createDirt(new Point(3,5));
-		mp.createDirt(new Point(4,5));
-		mp.createDirt(new Point(5,5));
-		mp.createDirt(new Point(6,5));
-		mp.createDirt(new Point(3,6));
-		mp.createDirt(new Point(4,6));
-		mp.createDirt(new Point(5,6));
-		mp.createDirt(new Point(6,6));
+		ASCIIDirector dr =new ASCIIDirector(new File(System.getProperty("user.dir")+"\\src\\main\\resources\\"+"mapASCII"));
+		dr.Construct(mp);
 		BufferedImage img =mp.getResult();
 		imglabel.setIcon(new ImageIcon(img));
 		frame.repaint();

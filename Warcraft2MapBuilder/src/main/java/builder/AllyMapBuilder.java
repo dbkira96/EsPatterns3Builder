@@ -37,17 +37,49 @@ public class AllyMapBuilder implements Builder {
 		int[] x= {9,10,11,12,13,14,15,17,18,1,2,3,4,5,6,7,8,9,10,11,12,13,14};
 		int[] y= {9,9,9,9,9,9,9,9,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10};
 		ArrayList<Point> points = getPoints(x,y);
+		DrawTile(points,p);
+	}
+
+	private void DrawTile(ArrayList<Point> points, Point p) {
 		Random r =new Random();
 		Point pos =points.get(r.nextInt()&points.size());
+		//Point pos =points.get(r.nextInt());
 		BufferedImage tile = sprite.getImageFor(pos);
 		g2d.drawImage(tile,  p.x*square, p.y*square, square, square, null);
+		
 	}
 
 	public void createGrass(Point p) {
+		int[] x= {10,11,12,13,14,15,17,18,1,2,3,4,5,6,7,8,9,10,11,12,13,14};
+		int[] y= {12,12,12,12,12,12,12,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13};
 		
+		ArrayList<Point> points = getPoints(x,y);
+		DrawTile(points,p);
 
 	}
+	public void createTree(Point p) {
+		int[] x= {9,10,11,12,13,14,15,17,18,1,2,3,4,5,6,7,8,9,10,11,12,13,14};
+		int[] y= {5,5,5,5,5,5,5,5,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6};
+		ArrayList<Point> points = getPoints(x,y);
+		DrawTile(points,p);
+		
+	}
 
+	public void createSand(Point p) {
+		int[] x= {9,10,11,12,13,14,15,17,18,1,2,3,4,5,6,7,8,9,10,11,12,13,14};
+		int[] y= {9,9,9,9,9,9,9,9,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10};
+		ArrayList<Point> points = getPoints(x,y);
+		DrawTile(points,p);
+		
+	}
+
+	public void createWater(Point p) {
+		int[] x= {9,10,11,12,13,14,15,17,18,1,2,3,4,5,6,7,8,9,10,11,12,13,14};
+		int[] y= {13,13,13,13,13,13,13,13,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14};
+		ArrayList<Point> points = getPoints(x,y);
+		DrawTile(points,p);
+		
+	}
 	public BufferedImage getResult() {
 		// TODO Auto-generated method stub
 		return buf;
@@ -65,4 +97,6 @@ public class AllyMapBuilder implements Builder {
          buf = new BufferedImage(imgWidth, imgHeight, BufferedImage.TYPE_INT_RGB);
          g2d = buf.createGraphics();
 	}
+
+	
 }
