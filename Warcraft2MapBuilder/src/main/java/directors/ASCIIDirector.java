@@ -43,6 +43,7 @@ public class ASCIIDirector {
 			        	break;
 			        case 'S':
 			        	b.createDirt(new Point(x,y));
+			        	break;
 			        case 'W':
 			        	b.createWater(new Point(x,y));
 			        	break;

@@ -10,14 +10,9 @@ import java.util.Random;
 
 import javax.imageio.ImageIO;
 
-public class AllyMapBuilder implements Builder {
+public class AllyMapBuilder extends MapBuilder {
 
-	int imgWidth=600;
-	int imgHeight=600;
-	int square=32;
-	public SpriteSheet sprite;
-	private BufferedImage buf;
-	private Graphics2D g2d ;
+
 	
 	public AllyMapBuilder(int x,int y) {
 		imgWidth=x;
@@ -34,15 +29,15 @@ public class AllyMapBuilder implements Builder {
 	}
 	
 	public void createDirt(Point p) {
-		int[] x= {9,10,11,12,13,14,15,17,18,1,2,3,4,5,6,7,8,9,10,11,12,13,14};
-		int[] y= {9,9,9,9,9,9,9,9,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10};
+		int[] x= {9,10,11};
+		int[] y= {9,9,9};
 		ArrayList<Point> points = getPoints(x,y);
 		DrawTile(points,p);
 	}
 
 	private void DrawTile(ArrayList<Point> points, Point p) {
 		Random r =new Random();
-		Point pos =points.get(r.nextInt()&points.size());
+		Point pos =points.get(r.nextInt()&points.size()-1);
 		//Point pos =points.get(r.nextInt());
 		BufferedImage tile = sprite.getImageFor(pos);
 		g2d.drawImage(tile,  p.x*square, p.y*square, square, square, null);
@@ -50,32 +45,29 @@ public class AllyMapBuilder implements Builder {
 	}
 
 	public void createGrass(Point p) {
-		int[] x= {10,11,12,13,14,15,17,18,1,2,3,4,5,6,7,8,9,10,11,12,13,14};
-		int[] y= {12,12,12,12,12,12,12,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13};
+		int[] x= {10,11,12};
+		int[] y= {12,12,12};
 		
 		ArrayList<Point> points = getPoints(x,y);
 		DrawTile(points,p);
 
 	}
 	public void createTree(Point p) {
-		int[] x= {9,10,11,12,13,14,15,17,18,1,2,3,4,5,6,7,8,9,10,11,12,13,14};
-		int[] y= {5,5,5,5,5,5,5,5,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6};
+		int[] x= {12,13};
+		int[] y= {5,5};
 		ArrayList<Point> points = getPoints(x,y);
 		DrawTile(points,p);
 		
 	}
 
 	public void createSand(Point p) {
-		int[] x= {9,10,11,12,13,14,15,17,18,1,2,3,4,5,6,7,8,9,10,11,12,13,14};
-		int[] y= {9,9,9,9,9,9,9,9,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10};
-		ArrayList<Point> points = getPoints(x,y);
-		DrawTile(points,p);
+		createDirt(p);
 		
 	}
 
 	public void createWater(Point p) {
-		int[] x= {9,10,11,12,13,14,15,17,18,1,2,3,4,5,6,7,8,9,10,11,12,13,14};
-		int[] y= {13,13,13,13,13,13,13,13,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14};
+		int[] x= {15,16,17,18};
+		int[] y= {15,15,15,15};
 		ArrayList<Point> points = getPoints(x,y);
 		DrawTile(points,p);
 		

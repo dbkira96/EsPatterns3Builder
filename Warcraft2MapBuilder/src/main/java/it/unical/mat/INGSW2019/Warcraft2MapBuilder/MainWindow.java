@@ -16,6 +16,7 @@ import builder.AllyMapBuilder;
 import directors.ASCIIDirector;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 
 public class MainWindow {
 
@@ -52,12 +53,13 @@ public class MainWindow {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 768, 724);
+		frame.setBounds(100, 100, 616, 645);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
 		imglabel = new JLabel("");
-		imglabel.setBounds(0, 0, 600, 600);
+		imglabel.setBackground(Color.GREEN);
+		imglabel.setBounds(0, -20, 640, 640);
 		frame.getContentPane().add(imglabel);
 		AllyMapBuilder mp=new AllyMapBuilder(600,600);
 		ASCIIDirector dr =new ASCIIDirector(new File(System.getProperty("user.dir")+"\\src\\main\\resources\\"+"mapASCII"));
