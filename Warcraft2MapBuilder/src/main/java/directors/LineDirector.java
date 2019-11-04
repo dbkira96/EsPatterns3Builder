@@ -9,13 +9,13 @@ import java.io.IOException;
 
 import builder.Builder;
 
-public class ASCIIDirector {
-
+public class LineDirector {
 	FileReader fr;
 	BufferedReader br;
 	File file;
-	public ASCIIDirector(String f)  {
+	public LineDirector(String f)  {
 		file=new File(f);
+		
 			
 		
 	}
@@ -31,35 +31,35 @@ public class ASCIIDirector {
 	
 	public void Construct(Builder b)  {
 		initialize();
-		int r;
+		String line ;
 		int x=0;
 		int y=0;
+		String type;
 		 try {
-			while ((r = br.read()) != -1) {
-			        char ch = (char) r;
-			        switch(ch) {
-			        case 'T':
+			while ((line = br.readLine()) != null) {
+			       
+					type=line.split(",")[0];
+					x= Integer.parseInt(line.split(",")[1]);
+					y= Integer.parseInt(line.split(",")[2]);
+					
+					switch(type) {
+			        case "TREE":
 			        	b.createTree(new Point(x,y));
 			        	break;
-			        case 'G':
+			        case "GRASS":
 			        	b.createGrass(new Point(x,y));
 			        	break;
-			        case 'D':
+			        case "DIRT":
 			        	b.createDirt(new Point(x,y));
 			        	break;
-			        case 'S':
+			        case "SAND":
 			        	b.createSand(new Point(x,y));
 			        	break;
-			        case 'W':
+			        case "WATER":
 			        	b.createWater(new Point(x,y));
 			        	break;
 			        }
-			        x+=1;
-			        if (ch=='\n') {
-			        	x=0;
-			        	y+=1;
-			        }
-
+					
 			    }
 			br.close();
 			fr.close();

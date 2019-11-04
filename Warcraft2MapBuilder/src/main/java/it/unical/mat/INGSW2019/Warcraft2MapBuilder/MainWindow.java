@@ -13,7 +13,12 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 import builder.AllyMapBuilder;
+import builder.HordeMapBuilder;
+import builder.LineFileBuilder;
+import builder.MapBuilder;
+import builder.MineMapBuilder;
 import directors.ASCIIDirector;
+import directors.LineDirector;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -53,18 +58,31 @@ public class MainWindow {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 616, 645);
+		frame.setBounds(0, 0, 640, 640);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
 		imglabel = new JLabel("");
 		imglabel.setBackground(Color.GREEN);
-		imglabel.setBounds(0, -20, 640, 640);
+		imglabel.setBounds(0, 0, 640, 640);
 		frame.getContentPane().add(imglabel);
-		AllyMapBuilder mp=new AllyMapBuilder(600,600);
-		ASCIIDirector dr =new ASCIIDirector(new File(System.getProperty("user.dir")+"\\src\\main\\resources\\"+"mapASCII"));
-		dr.Construct(mp);
+		
+		//Linedirector->mapBuilder
+		MapBuilder mp=new MineMapBuilder(640,640,32);
+		LineDirector ldr =new LineDirector(System.getProperty("user.dir")+"\\src\\main\\resources\\"+"mapLINED");
+		ldr.Construct(mp);
 		BufferedImage img =mp.getResult();
+		////ASCIIDirector-->LineBuilder
+		//ASCIIDirector dr =new ASCIIDirector(System.getProperty("user.dir")+"\\src\\main\\resources\\"+"mapASCII");
+		//LineFileBuilder lb = new LineFileBuilder(System.getProperty("user.dir")+"\\src\\main\\resources\\"+"mapLINED");
+		//dr.Construct(lb);
+		//lb.getResult();
+		
+		
+		
+		
+		
+		
 		imglabel.setIcon(new ImageIcon(img));
 		frame.repaint();
 	}
