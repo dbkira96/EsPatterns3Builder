@@ -9,7 +9,7 @@ import java.io.IOException;
 
 import builder.Builder;
 
-public class ASCIIDirector {
+public class ASCIIDirector implements Director {
 
 	FileReader fr;
 	BufferedReader br;
@@ -29,7 +29,7 @@ public class ASCIIDirector {
 		}
 	}
 	
-	public void Construct(Builder b)  {
+	public void construct(Builder b)  {
 		initialize();
 		int r;
 		int x=0;

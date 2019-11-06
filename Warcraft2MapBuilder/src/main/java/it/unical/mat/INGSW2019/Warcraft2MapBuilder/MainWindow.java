@@ -69,13 +69,14 @@ public class MainWindow {
 		
 		//Linedirector->mapBuilder
 		MapBuilder mp=new MineMapBuilder(640,640,32);
-		LineDirector ldr =new LineDirector(System.getProperty("user.dir")+"\\src\\main\\resources\\"+"mapLINED");
-		ldr.Construct(mp);
+		ASCIIDirector ldr =new ASCIIDirector(System.getProperty("user.dir")+"\\src\\main\\resources\\"+"mapASCII");
+		//LineDirector ldr =new LineDirector(System.getProperty("user.dir")+"\\src\\main\\resources\\"+"mapLINED");
+		ldr.construct(mp);
 		BufferedImage img =mp.getResult();
 		////ASCIIDirector-->LineBuilder
 		//ASCIIDirector dr =new ASCIIDirector(System.getProperty("user.dir")+"\\src\\main\\resources\\"+"mapASCII");
 		//LineFileBuilder lb = new LineFileBuilder(System.getProperty("user.dir")+"\\src\\main\\resources\\"+"mapLINED");
-		//dr.Construct(lb);
+		//dr.construct(lb);
 		//lb.getResult();
 		
 		

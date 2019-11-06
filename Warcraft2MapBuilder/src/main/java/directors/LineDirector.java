@@ -9,7 +9,7 @@ import java.io.IOException;
 
 import builder.Builder;
 
-public class LineDirector {
+public class LineDirector implements Director{
 	FileReader fr;
 	BufferedReader br;
 	File file;
@@ -29,7 +29,7 @@ public class LineDirector {
 		}
 	}
 	
-	public void Construct(Builder b)  {
+	public void construct(Builder b)  {
 		initialize();
 		String line ;
 		int x=0;
